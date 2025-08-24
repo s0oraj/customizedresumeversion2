@@ -1,9 +1,7 @@
 import React from 'react';
 import { SectionTitle } from '../ui/SectionTitle';
-
 export function Skills() {
-  return (
-    <div>
+  return <div>
       <SectionTitle>Technical Skills</SectionTitle>
       <div className="bg-gray-900 p-4 rounded mt-3 space-y-2">
         <div>
@@ -34,6 +32,5 @@ export function Skills() {
           </span>
         </div>
       </div>
-    </div>
-  );
+    </div>;
 }
