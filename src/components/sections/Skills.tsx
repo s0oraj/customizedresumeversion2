@@ -1,8 +1,10 @@
 import React from 'react';
 import { SectionTitle } from '../ui/SectionTitle';
+import { CodeIcon } from 'lucide-react';
+
 export function Skills() {
   return <div>
-      <SectionTitle>Technical Skills</SectionTitle>
+      <SectionTitle icon={<CodeIcon size={18} />}>Technical Skills</SectionTitle>
       <div className="bg-gray-900 p-4 rounded mt-3 space-y-2">
         <div>
           <span className="text-[#5DC22D] font-medium mr-2">
