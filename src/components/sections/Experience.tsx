@@ -22,7 +22,7 @@ export function Experience() {
       <SectionTitle icon={<BriefcaseIcon size={18} />}>Experience</SectionTitle>
       <div className="space-y-4 mt-3 relative pl-8">
         {/* Timeline line - positioned to run through center of dots */}
-        <div className="absolute left-[14px] top-0 bottom-0 w-0.5 bg-gray-800"></div>
+        <div className="absolute left-[-36.5px] top-0 bottom-0 w-0.5 bg-gray-800"></div>
         {experiences.map((exp, index) => (
           <div key={index} className="bg-gray-900 p-4 rounded relative hover:shadow-[0_0_15px_rgba(93,194,45,0.1)] transition-shadow duration-300">
             {/* Timeline dot */}
