@@ -18,11 +18,11 @@ export function Experience() {
   return <div>
       <SectionTitle icon={<BriefcaseIcon size={18} />}>Experience</SectionTitle>
       <div className="space-y-4 mt-3 relative">
-        {/* Timeline line */}
-        <div className="absolute left-[15px] top-4 bottom-4 w-0.5 bg-gray-800"></div>
+        {/* Timeline line - positioned to run through center of dots */}
+        <div className="absolute left-[-24px] top-8 bottom-8 w-0.5 bg-gray-800"></div>
         {experiences.map((exp, index) => <div key={index} className="bg-gray-900 p-4 rounded ml-8 relative hover:shadow-[0_0_15px_rgba(93,194,45,0.1)] transition-shadow duration-300">
             {/* Timeline dot */}
-            <div className="absolute left-[-30px] top-5 w-3 h-3 rounded-full bg-[#5DC22D] shadow-[0_0_5px_rgba(93,194,45,0.5)]"></div>
+            <div className="absolute left-[-30px] top-5 w-3 h-3 rounded-full bg-[#5DC22D] shadow-[0_0_5px_rgba(93,194,45,0.5)] z-10"></div>
             {/* Company and period */}
             <div className="flex justify-between items-start mb-2">
               <h3 className="text-gray-200 font-semibold flex items-center">
