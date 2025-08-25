@@ -37,26 +37,24 @@ export default async function handler(req, res) {
         chromium = (await import('@sparticuz/chromium')).default;
         puppeteer = await import('puppeteer-core');
         
-        console.log('Chromium args:', chromium.args);
-        // Add these args to fix the libnss3.so error
-const args = [
-  ...chromium.args,
-  '--no-sandbox',
-  '--disable-setuid-sandbox',
-  '--disable-dev-shm-usage',
-  '--disable-extensions',
-  '--disable-gpu',
-  '--single-process',
-  '--no-zygote',
-  '--disable-features=VizDisplayCompositor'
-];
+        console.log('Original chromium args:', chromium.args);
 
-launchOptions = {
-  ...launchOptions,
-  args: args,
-  executablePath: await chromium.executablePath(),
-  headless: chromium.headless,
-};
+        launchOptions = {
+          ...launchOptions,
+          args: [
+            ...chromium.args,
+            '--no-sandbox',
+            '--disable-setuid-sandbox',
+            '--disable-dev-shm-usage',
+            '--disable-extensions',
+            '--disable-gpu',
+            '--single-process',
+            '--no-zygote',
+            '--disable-features=VizDisplayCompositor'
+          ],
+          executablePath: await chromium.executablePath(),
+          headless: chromium.headless,
+        };
         
         console.log('Vercel launch options configured');
       } catch (importError) {
