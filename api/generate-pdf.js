@@ -1,5 +1,4 @@
 // api/generate-pdf.js
-const puppeteer = require('puppeteer');
 
 module.exports = async (req, res) => {
   // Set CORS headers
@@ -20,26 +19,29 @@ module.exports = async (req, res) => {
   try {
     console.log('Starting PDF generation...');
     
-    // Launch browser with optimized settings for Vercel
-    browser = await puppeteer.launch({
-      headless: true,
-      args: [
-        '--no-sandbox',
-        '--disable-setuid-sandbox',
-        '--disable-dev-shm-usage',
-        '--disable-gpu',
-        '--no-first-run',
-        '--no-zygote',
-        '--single-process',
-        '--disable-extensions',
-        '--disable-background-timer-throttling',
-        '--disable-backgrounding-occluded-windows',
-        '--disable-renderer-backgrounding'
-      ],
-      timeout: 30000
-    });
+    // Detect environment and load appropriate packages
+    const isVercel = !!process.env.VERCEL_ENV;
+    let puppeteer, launchOptions = { headless: true };
 
+    if (isVercel) {
+      console.log('Running on Vercel - using puppeteer-core + @sparticuz/chromium');
+      const chromium = (await import('@sparticuz/chromium')).default;
+      puppeteer = await import('puppeteer-core');
+      
+      launchOptions = {
+        ...launchOptions,
+        args: chromium.args,
+        executablePath: await chromium.executablePath(),
+      };
+    } else {
+      console.log('Running locally - using regular puppeteer');
+      puppeteer = await import('puppeteer');
+    }
+
+    // Launch browser
+    browser = await puppeteer.launch(launchOptions);
     console.log('Browser launched successfully');
+    
     const page = await browser.newPage();
 
     // Set viewport for PDF generation
@@ -49,7 +51,7 @@ module.exports = async (req, res) => {
       deviceScaleFactor: 2
     });
 
-    // Get the URL from request body, construct proper URL
+    // Get the URL from request body
     const host = req.headers.host || req.headers['x-forwarded-host'];
     const protocol = req.headers['x-forwarded-proto'] || 'https';
     const targetUrl = req.body?.url || `${protocol}://${host}`;
@@ -66,24 +68,33 @@ module.exports = async (req, res) => {
     // Add styles to optimize for PDF
     await page.addStyleTag({
       content: `
-        .fixed { display: none !important; }
+        /* Hide fixed elements like download buttons */
+        .fixed, 
+        button[class*="download"], 
+        div[class*="download"] { 
+          display: none !important; 
+        }
+        
+        /* Optimize for PDF */
         body { 
           margin: 0 !important; 
           padding: 20px !important; 
           background: #000 !important;
         }
+        
         * { 
           -webkit-print-color-adjust: exact !important;
           color-adjust: exact !important;
         }
+        
         .w-full.max-w-5xl {
           max-width: 100% !important;
           width: 100% !important;
         }
-        /* Hide any download buttons */
-        button[class*="download"], 
-        div[class*="download"] { 
-          display: none !important; 
+        
+        /* Reset z-index for PDF */
+        .z-50, .z-10 {
+          z-index: auto !important;
         }
       `
     });
@@ -104,7 +115,7 @@ module.exports = async (req, res) => {
     // Generate PDF
     const pdf = await page.pdf({
       width: 1200,
-      height: Math.max(contentHeight + 100, 1600), // Minimum height
+      height: Math.max(contentHeight + 100, 1600),
       printBackground: true,
       margin: { 
         top: '20px', 
@@ -113,8 +124,7 @@ module.exports = async (req, res) => {
         right: '20px' 
       },
       displayHeaderFooter: false,
-      preferCSSPageSize: false,
-      format: undefined // Don't use standard format
+      preferCSSPageSize: false
     });
 
     console.log('PDF generated successfully, size:', pdf.length);
@@ -130,14 +140,12 @@ module.exports = async (req, res) => {
   } catch (error) {
     console.error('PDF generation error:', error);
     
-    // Send detailed error information
     res.status(500).json({ 
       message: 'PDF generation failed', 
       error: error.message,
       stack: process.env.NODE_ENV === 'development' ? error.stack : undefined
     });
   } finally {
-    // Always close browser
     if (browser) {
       try {
         await browser.close();
