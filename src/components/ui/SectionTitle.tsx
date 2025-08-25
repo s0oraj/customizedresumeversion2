@@ -1,4 +1,5 @@
-import React from 'react';
+
+import React, { ReactNode } from 'react';
 interface SectionTitleProps {
   children: ReactNode;
   icon?: ReactNode;
