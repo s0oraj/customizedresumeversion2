@@ -9,7 +9,7 @@ import { Research } from './sections/Research';
 import { Hackathons } from './sections/Hackathons';
 import { AndroidDev } from './sections/AndroidDev';
 export function Resume() {
-  return <div className="w-full max-w-5xl mx-auto text-gray-200 py-6 px-4 sm:px-6 relative bg-gradient-to-b from-black to-gray-950">
+  return <div className="w-full max-w-7xl mx-auto text-gray-200 py-6 px-4 sm:px-6 relative bg-gradient-to-b from-black to-gray-950">
       {/* Subtle background pattern */}
       <div className="absolute inset-0 bg-[radial-gradient(#222_1px,transparent_1px)] bg-[length:20px_20px] opacity-10 z-0"></div>
       {/* Netflix-inspired grid lines */}
