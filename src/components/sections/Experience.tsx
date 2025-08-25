@@ -43,15 +43,20 @@ export function Experience() {
                 <span>{exp.location}</span>
               </div>
             </div>
-            {/* Experience points */}
-            <ul className="space-y-1 mt-2">
+{/* Experience points */}
+            <ul className="space-y-2 mt-2">
               {exp.points.map((point, idx) => (
-                <li key={idx} className="flex items-start text-xs text-gray-400">
-                  <span className="text-[#5DC22D] mr-2 mt-0.5">•</span>
+                <li key={idx} className="flex items-start text-sm text-gray-400">
+                  <div className="min-w-4 h-4 flex items-center justify-center mt-0.5 mr-2">
+                    <span className="w-2 h-2 bg-[#5DC22D] rounded-full"></span>
+                  </div>
                   <span dangerouslySetInnerHTML={{ __html: point }}></span>
                 </li>
               ))}
             </ul>
+
+
+
           </div>
         ))}
       </div>

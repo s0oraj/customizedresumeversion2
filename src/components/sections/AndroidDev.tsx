@@ -47,7 +47,7 @@ export function AndroidDev() {
                 </span>)}
             </div>
             <ul className="space-y-2 mt-3">
-              {project.points.map((point, idx) => <li key={idx} className="flex items-start text-xs text-gray-400">
+              {project.points.map((point, idx) => <li key={idx} className="flex items-start text-sm text-gray-400">
                   <div className="min-w-4 h-4 flex items-center justify-center mt-0.5 mr-2">
                     <span className="w-1.5 h-1.5 bg-[#5DC22D] rounded-full"></span>
                   </div>

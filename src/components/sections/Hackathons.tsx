@@ -25,7 +25,7 @@ export function Hackathons() {
           </div>
         </div>
         <div className="p-3 bg-gray-950 bg-opacity-50 rounded border border-gray-800 space-y-2">
-          <div className="flex items-start text-xs text-gray-400">
+          <div className="flex items-start text-sm text-gray-400">
             <div className="min-w-4 h-4 flex items-center justify-center mt-0.5 mr-2">
               <span className="w-1.5 h-1.5 bg-[#5DC22D] rounded-full"></span>
             </div>
@@ -50,7 +50,7 @@ export function Hackathons() {
               to enhance packaging and customer satisfaction.
             </span>
           </div>
-          <div className="flex items-start text-xs text-gray-400">
+          <div className="flex items-start text-sm text-gray-400">
             <div className="min-w-4 h-4 flex items-center justify-center mt-0.5 mr-2">
               <span className="w-1.5 h-1.5 bg-[#5DC22D] rounded-full"></span>
             </div>

@@ -40,14 +40,16 @@ export function Projects() {
             <div className="text-xs text-[#5DC22D] mt-1 mb-2 bg-black bg-opacity-30 inline-block px-2 py-0.5 rounded">
               {project.technologies}
             </div>
-            <ul className="space-y-1 relative z-10">
-              {project.points.map((point, idx) => <li key={idx} className="flex items-start text-xs text-gray-400">
-                  <span className="text-[#5DC22D] mr-2 mt-0.5">•</span>
-                  <span dangerouslySetInnerHTML={{
-              __html: point
-            }}></span>
-                </li>)}
-            </ul>
+<ul className="space-y-2 relative z-10">
+  {project.points.map((point, idx) => <li key={idx} className="flex items-start text-sm text-gray-400">
+      <div className="min-w-4 h-4 flex items-center justify-center mt-0.5 mr-2">
+        <span className="w-2 h-2 bg-[#5DC22D] rounded-full"></span>
+      </div>
+      <span dangerouslySetInnerHTML={{
+    __html: point
+  }}></span>
+    </li>)}
+</ul>
           </div>)}
       </div>
     </div>;

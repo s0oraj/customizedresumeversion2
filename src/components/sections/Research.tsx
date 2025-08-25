@@ -46,7 +46,7 @@ export function Research() {
                 </span>)}
           </div>
           <ul className="space-y-2 mt-3">
-            <li className="flex items-start text-xs text-gray-400">
+            <li className="flex items-start text-sm text-gray-400">
               <div className="min-w-4 h-4 flex items-center justify-center mt-0.5 mr-2">
                 <span className="w-1.5 h-1.5 bg-[#5DC22D] rounded-full"></span>
               </div>
@@ -65,7 +65,7 @@ export function Research() {
                 detection.
               </span>
             </li>
-            <li className="flex items-start text-xs text-gray-400">
+            <li className="flex items-start text-sm text-gray-400">
               <div className="min-w-4 h-4 flex items-center justify-center mt-0.5 mr-2">
                 <span className="w-1.5 h-1.5 bg-[#5DC22D] rounded-full"></span>
               </div>
@@ -112,7 +112,7 @@ export function Research() {
                 </span>)}
           </div>
           <ul className="space-y-2 mt-3">
-            <li className="flex items-start text-xs text-gray-400">
+            <li className="flex items-start text-sm text-gray-400">
               <div className="min-w-4 h-4 flex items-center justify-center mt-0.5 mr-2">
                 <span className="w-1.5 h-1.5 bg-[#5DC22D] rounded-full"></span>
               </div>
@@ -136,7 +136,7 @@ export function Research() {
                 for hippocampus-based analysis.
               </span>
             </li>
-            <li className="flex items-start text-xs text-gray-400">
+            <li className="flex items-start text-sm text-gray-400">
               <div className="min-w-4 h-4 flex items-center justify-center mt-0.5 mr-2">
                 <span className="w-1.5 h-1.5 bg-[#5DC22D] rounded-full"></span>
               </div>

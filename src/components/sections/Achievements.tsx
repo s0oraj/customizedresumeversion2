@@ -17,7 +17,7 @@ export function Achievements() {
               01/2024
             </span>
           </div>
-          <p className="text-xs text-gray-400 mt-2 pl-6">
+          <p className="text-sm text-gray-400 mt-2 pl-6">
             Offered a Research internship by Prof. Tushar Sandhan from IIT
             Kanpur to work on{' '}
             <span className="font-semibold text-[#5DC22D]">
@@ -40,7 +40,7 @@ export function Achievements() {
           </div>
           <div className="mt-2 pl-6 space-y-2">
             <div>
-              <p className="text-xs text-gray-400">
+              <p className="text-sm text-gray-400">
                 Ranked{' '}
                 <span className="font-semibold text-[#5DC22D]">Top 9.53%</span>{' '}
                 of all contestants on LeetCode with a{' '}
@@ -56,7 +56,7 @@ export function Achievements() {
               </div>
             </div>
             <div>
-              <p className="text-xs text-gray-400">
+              <p className="text-sm text-gray-400">
                 Ranked{' '}
                 <span className="font-semibold text-[#5DC22D]">AIR 688</span>{' '}
                 out of{' '}
@@ -83,7 +83,7 @@ export function Achievements() {
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-2 pl-6">
             <div className="relative p-3 bg-gray-950 bg-opacity-50 rounded border border-gray-800">
-              <p className="text-xs text-gray-400">
+              <p className="text-sm text-gray-400">
                 Ranked <span className="font-semibold text-[#5DC22D]">228</span>{' '}
                 globally out of{' '}
                 <span className="font-semibold text-[#5DC22D]">30,000+</span>{' '}
